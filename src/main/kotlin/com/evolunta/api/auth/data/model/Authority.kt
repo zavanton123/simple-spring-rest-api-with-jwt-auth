@@ -1,4 +1,4 @@
-package com.evolunta.api.auth.domain
+package com.evolunta.api.auth.data.model
 
 import com.evolunta.api.util.EMPTY
 import javax.persistence.Entity

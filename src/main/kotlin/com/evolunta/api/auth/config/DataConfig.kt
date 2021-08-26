@@ -17,7 +17,6 @@ class DataConfig(
     fun dataSourceInitializer(
         @Qualifier("dataSource") dataSource: DataSource
     ): DataSourceInitializer {
-        println("zavanton - init data")
         val resourceDatabasePopulator = ResourceDatabasePopulator()
         resourceDatabasePopulator.addScript(ClassPathResource("/data.sql"))
         val dataSourceInitializer = DataSourceInitializer()
