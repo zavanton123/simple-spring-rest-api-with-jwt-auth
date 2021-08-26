@@ -1,0 +1,15 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/demo_api_one?serverTimezone=UTC
+    username: zavanton
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    defer-datasource-initialization: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
