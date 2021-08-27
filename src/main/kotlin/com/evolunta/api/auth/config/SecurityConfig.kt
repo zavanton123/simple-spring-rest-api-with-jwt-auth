@@ -28,10 +28,6 @@ class SecurityConfig(
 
     override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
-            .antMatchers("/admin")
-            .hasAnyAuthority("ADMIN", "USER")
-            .antMatchers("/demo")
-            .authenticated()
             .anyRequest().permitAll()
             .and()
             .httpBasic()

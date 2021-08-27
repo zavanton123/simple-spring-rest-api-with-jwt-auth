@@ -2,6 +2,8 @@ package com.evolunta.api.util
 
 const val EMPTY = ""
 
+const val ADMIN_AUTHORITY = "ADMIN"
+
 const val ADMIN_USERNAME_ENV_VAR = "ADMIN_USERNAME"
 const val DEFAULT_ADMIN_USERNAME = "admin"
 
