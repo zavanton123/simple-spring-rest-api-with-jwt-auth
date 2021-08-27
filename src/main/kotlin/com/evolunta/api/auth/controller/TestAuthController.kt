@@ -25,10 +25,9 @@ class TestAuthController {
     }
 
     @GetMapping("/user")
-    @Secured("ADMIN")
+    @RolesAllowed("ADMIN")
     fun user(): String = "user page"
 
     @GetMapping("/admin")
-    @RolesAllowed("ADMIN")
     fun admin(): String = "admin page"
 }
