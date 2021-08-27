@@ -23,7 +23,7 @@ data class User(
 ) {
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     @JoinTable(
-        name = "UserAuthority",
+        name = "user_authority",
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "authority_id")]
     )
