@@ -1,5 +1,6 @@
 package com.evolunta.api.util
 
+
 const val EMPTY = ""
 
 const val ADMIN_AUTHORITY = "ADMIN"
