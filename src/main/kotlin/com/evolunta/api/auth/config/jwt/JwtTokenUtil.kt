@@ -1,4 +1,4 @@
-package com.evolunta.api.auth.config
+package com.evolunta.api.auth.config.jwt
 
 import com.evolunta.api.auth.data.model.User
 import com.evolunta.api.auth.exception.TokenParseException

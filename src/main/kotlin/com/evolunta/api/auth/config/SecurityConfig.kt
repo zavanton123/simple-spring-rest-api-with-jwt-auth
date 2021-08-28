@@ -1,5 +1,6 @@
 package com.evolunta.api.auth.config
 
+import com.evolunta.api.auth.config.jwt.JwtTokenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpMethod
@@ -13,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
@@ -25,7 +27,8 @@ import org.springframework.web.filter.CorsFilter
 )
 class SecurityConfig(
     private val passwordEncoder: PasswordEncoder,
-    private val userDetailsService: UserDetailsService
+    private val userDetailsService: UserDetailsService,
+    private val jwtTokenFilter: JwtTokenFilter,
 ) : WebSecurityConfigurerAdapter() {
 
 
@@ -61,10 +64,11 @@ class SecurityConfig(
             .anyRequest().permitAll()
             .and()
 
-            .httpBasic()
-
-        // Add JWT token filter
-        // .addFilterBefore()
+            // Add JWT token filter
+            .addFilterBefore(
+                jwtTokenFilter,
+                UsernamePasswordAuthenticationFilter::class.java
+            )
     }
 
     // setup CORS filter
