@@ -47,10 +47,10 @@ class JwtTokenUtil(
 
     fun validateToken(token: String): Boolean {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(token)
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token)
             return true
         } catch (exception: Exception) {
-            log.error("zavanton - Failed to validate token: $token: ${exception.message}")
+            log.error("zavanton - Failed to validate token: $token ${exception.message}")
         }
         return false
     }

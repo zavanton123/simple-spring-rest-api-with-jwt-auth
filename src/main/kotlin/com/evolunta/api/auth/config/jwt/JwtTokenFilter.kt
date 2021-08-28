@@ -4,7 +4,6 @@ import com.evolunta.api.auth.domain.service.CustomUserDetailService
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import org.slf4j.Logger
 import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
@@ -14,13 +13,12 @@ import org.springframework.web.filter.OncePerRequestFilter
 
 @Component
 class JwtTokenFilter(
-    private val log: Logger,
     private val jwtTokenUtil: JwtTokenUtil,
     private val userDetailService: CustomUserDetailService,
 ) : OncePerRequestFilter() {
 
     companion object {
-        private const val AUTHORIZATION_HEADER_PREFIX = "BEARER "
+        private const val AUTHORIZATION_HEADER_PREFIX = "Bearer "
     }
 
     override fun doFilterInternal(
