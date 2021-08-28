@@ -3,6 +3,7 @@ package com.evolunta.api.auth.config
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpMethod
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -66,6 +67,7 @@ class SecurityConfig(
         // .addFilterBefore()
     }
 
+    // setup CORS filter
     @Bean
     fun corsFilter(): CorsFilter {
         val source = UrlBasedCorsConfigurationSource()
@@ -76,5 +78,11 @@ class SecurityConfig(
         config.addAllowedMethod("*")
         source.registerCorsConfiguration("/**", config)
         return CorsFilter(source)
+    }
+
+    // Expose authentication manager
+    @Bean
+    override fun authenticationManagerBean(): AuthenticationManager {
+        return super.authenticationManagerBean()
     }
 }
