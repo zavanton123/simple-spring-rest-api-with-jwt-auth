@@ -34,6 +34,6 @@ class UserServiceImpl(
         val user = userMapper.mapToEntity(request)
         user.password = passwordEncoder.encode(user.password)
         val savedUser = userRepository.save(user)
-        return userMapper.mapToResponse(savedUser)
+        return userMapper.mapToCreateUserResponse(savedUser)
     }
 }

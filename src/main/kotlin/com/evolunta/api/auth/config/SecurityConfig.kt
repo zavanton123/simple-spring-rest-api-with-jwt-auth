@@ -59,6 +59,8 @@ class SecurityConfig(
 
             // setup url authorization access
             .authorizeRequests()
+            .antMatchers("/login")
+            .permitAll()
             .antMatchers(HttpMethod.GET, "/demo")
             .authenticated()
             .anyRequest().permitAll()
